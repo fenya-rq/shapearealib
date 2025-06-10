@@ -1,3 +1,26 @@
+# Library Development Task Description
+
+---
+
+This document outlines the scope and key requirements for a recent development task: creating a **C# or Python library** intended for distribution to external clients.
+
+## Description
+
+The core functionality of the library was to perform geometric area calculations. Specifically, it needed to **calculate the area of a circle given its radius** and the **area of a triangle given its three sides**.
+
+## Key Requirements
+
+Beyond basic operational correctness, the evaluation of the solution focused on several critical software engineering principles:
+
+* **Unit Tests:** Comprehensive **unit tests** were a fundamental requirement to ensure the accuracy, robustness, and reliability of all calculation methods.
+* **Extensibility:** The library's architecture had to demonstrate **easy extensibility**, allowing for the straightforward addition of new geometric shapes and their area calculation methods in the future.
+* **Compile-time Type Agnosticism:** A pivotal aspect was the ability to **compute a shape's area without prior knowledge of its specific type at compile-time**. This emphasized the application of polymorphism and flexible design patterns.
+* **Right Triangle Check:** An additional feature involved implementing a dedicated method to **verify if a given triangle is a right-angled triangle**.
+
+This task served as a comprehensive assessment of problem-solving abilities, adherence to best practices such as test-driven development, architectural design for scalability, and advanced type handling.
+
+___
+
 # Shape Area Library
 
 A Python library for calculating areas of geometric shapes with a clean, extensible interface.
@@ -12,8 +35,67 @@ A Python library for calculating areas of geometric shapes with a clean, extensi
 
 ## Installation
 
+This project serves as a small, straightforward library developed for an employer evaluation task and is not intended for general distribution on PyPI. Therefore, the installation process differs from a typical public package.
+
+### 1. Clone the Repository
+
+First, you'll need to clone the project's source code from GitHub to your local machine:
+
 ```bash
-pip install shapearea
+git clone https://github.com/fenya-rq/shapearealib.git
+cd shapearealib
+```
+
+### 2. Install Poetry and Build the Package
+
+This project uses [Poetry](https://python-poetry.org/) for dependency management and building. If you don't already have it, you can find installation instructions on the [official Poetry website](https://python-poetry.org/docs/#installation).
+
+Once Poetry is set up, navigate to the root directory of the cloned project (the one containing `pyproject.toml`) and run the build command:
+
+```bash
+poetry build
+```
+
+### 3. Install the Library
+
+This command will create the distributable files (`.whl` and `.tar.gz`) inside a new `dist/` directory within your project folder.
+
+After building, you can install the library into your Python environment. It's always a good practice to work within a virtual environment for your projects.
+
+#### For Development (Editable Install)
+
+If you plan to actively develop the library or make changes that you want to instantly see reflected in another project using it, an editable install is best. This creates a link to the source code, so updates are immediate.
+
+From the root of your consuming project's virtual environment:
+
+```bash
+pip install -e /path/to/shapearealib/
+```
+
+#### For General Use (from `.whl` file)
+
+If you prefer to install a stable, pre-built version of the library (without direct source linking), you can install the wheel file.
+
+From the root of your consuming project's virtual environment:
+
+```bash
+pip install /path/to/shapearealib/dist/shape_area_lib-0.1.0-py3-none-any.whl
+```
+
+### Using Poetry in your Consuming Project
+
+If the project where you want to use this library is also managed by Poetry, you can add it as a local dependency using `poetry add`:
+
+#### For an editable install (recommended for development):
+
+```bash
+poetry add --editable /path/to/shapearealib/
+```
+
+#### OR for a non-editable install from the wheel file:
+
+```bash
+poetry add /path/to/shapearealib/dist/shape_area_lib-0.1.0-py3-none-any.whl
 ```
 
 ## Quick Start
