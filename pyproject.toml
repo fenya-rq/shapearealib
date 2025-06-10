@@ -1,13 +1,40 @@
 [tool.poetry]
 name = "shape-area-lib"
 version = "0.1.0"
-description = ""
+packages = [
+    { include = "shapearea" }
+]
+description = "Library for calculating different geometry shapes area"
 authors = ["Yaroslav Panasenko <fenyochek@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "3.13.3"
 
+[tool.poetry.group.dev.dependencies]
+mypy = "1.16.0"
+pre-commit = "4.2.0"
+ruff = "0.11.13"
+pytest = "8.4.0"
+pytest-cov = "6.1.1"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+norecursedirs = [".git", ".tox", ".nox", ".venv", ".env", "build", "dist"]
+
+[tool.ruff]
+fix-only = true
+line-length = 100
+output-format = "grouped"
+
+[tool.ruff.format]
+docstring-code-format = true
+docstring-code-line-length = 72
+exclude = [".venv", "files", "parser.log", "example*.py"]
+quote-style = "single"
+
+[tool.ruff.lint.pydocstyle]
+convention = "pep257"
 
 [build-system]
 requires = ["poetry-core"]
