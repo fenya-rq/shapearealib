@@ -70,6 +70,19 @@ def test_triangle_invalid_type_raises(invalid_type):
         Triangle(*invalid_type)
 
 
+@pytest.mark.parametrize(
+    'sides, expected_check_result',
+    [
+        ((3, 4, 5), True),
+        ((5, 5, 6), False),
+    ],
+)
+def test_is_rectangular_triangle(sides, expected_check_result):
+    triangle = Triangle(*sides)
+    assert triangle.is_rectangular_triangle() is expected_check_result
+    assert triangle.is_rectangular_triangle() is expected_check_result
+
+
 # === get_area tests ===
 def test_get_area_with_circle_and_triangle():
     circle = Circle(2)
