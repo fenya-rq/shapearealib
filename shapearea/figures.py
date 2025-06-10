@@ -109,6 +109,30 @@ class Triangle:
         square = sqrt(p * (p - self.a) * (p - self.b) * (p - self.c))
         return round(square, 2)
 
+    def is_rectangular_triangle(self):
+        """
+        Check if the triangle is a right triangle using the Pythagorean theorem.
+
+        Uses floating-point tolerance to account for precision errors in calculations.
+        A triangle is considered right if the square of the longest side equals
+        the sum of squares of the other two sides (a² + b² = c²).
+
+        :returns: True if the triangle is a right triangle, False otherwise.
+        :rtype: bool
+
+        Example:
+            >>> triangle = Triangle(3, 4, 5)
+            >>> triangle.is_rectangular_triangle()
+            True
+            >>> triangle2 = Triangle(2, 3, 4)
+            >>> triangle2.is_rectangular_triangle()
+            False
+        """
+        sides = [self.a, self.b, self.c]
+        sides.sort()
+        leg1, leg2, hypotenuse = sides
+        return abs(hypotenuse ** 2 - (leg1 ** 2 + leg2 ** 2)) < 1e-10
+
 
 def get_area(shape: BaseShape) -> float:
     """
