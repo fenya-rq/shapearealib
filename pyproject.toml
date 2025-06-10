@@ -1,6 +1,9 @@
 [tool.poetry]
 name = "shape-area-lib"
 version = "0.1.0"
+packages = [
+    { include = "shapearea" }
+]
 description = "Library for calculating different geometry shapes area"
 authors = ["Yaroslav Panasenko <fenyochek@gmail.com>"]
 readme = "README.md"
