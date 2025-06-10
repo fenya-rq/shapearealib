@@ -2,21 +2,54 @@
 name = "shape-area-lib"
 version = "0.1.0"
 packages = [
-    { include = "shapearea" }
+    { include = "shapearea" },
 ]
 description = "Library for calculating different geometry shapes area"
 authors = ["Yaroslav Panasenko <fenyochek@gmail.com>"]
 readme = "README.md"
+include = ["README.md", "LICENSE"]
+exclude = [
+    "tests/",
+    "**/.git",
+    "**/.gitignore",
+    "**/.gitattributes",
+    "**/.idea",
+    "**/.venv/",
+    "**/poetry.lock",
+    "**/.DS_Store",
+    "**/*.pyc",
+    # General Python build/cache files
+    "**/__pycache__/",   # Python bytecode cache directories
+    "**/*.pyc",          # Compiled Python files (individual files)
+    "**/*.pyd",          # Compiled Python modules for Windows
+    "**/*.so",           # Compiled Python modules for Linux/macOS
+
+    # Specific tool caches
+    "**/.mypy_cache/",   # MyPy type checker cache
+    "**/.pytest_cache/", # Pytest cache
+    "**/.ruff_cache/",   # Ruff linter cache
+    "**/.eggs/",         # Old Setuptools build artifacts
+    "**/*.egg-info/",    # Setuptools metadata (can be in package or root)
+
+    # General build/dist directories (Poetry manages 'dist' automatically, but good to list)
+    "**/build/",         # General build directories
+    "**/dist/",          # Distribution files (Poetry manages this for its own build)
+
+    # Other common OS/IDE junk
+    "**/.DS_Store",      # macOS specific metadata files
+    "**/.vscode/",       # VS Code workspace files
+    "**/.idea/",
+]
 
 [tool.poetry.dependencies]
-python = "3.13.3"
+python = "^3.13.3"
 
 [tool.poetry.group.dev.dependencies]
-mypy = "1.16.0"
-pre-commit = "4.2.0"
-ruff = "0.11.13"
-pytest = "8.4.0"
-pytest-cov = "6.1.1"
+mypy = "^1.16.0"
+pre-commit = "^4.2.0"
+ruff = "^0.11.13"
+pytest = "^8.4.0"
+pytest-cov = "^6.1.1"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
