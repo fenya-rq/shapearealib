@@ -7,11 +7,11 @@ to other shapes via the BaseShape protocol interface.
 Shapes must implement a `calculate_area()` method.
 
 Example:
-    >>> from geometry import Circle, Triangle, get_area
+    >>> from shapearea import Circle, Triangle, get_area
     >>> circle = Circle(2)
     >>> triangle = Triangle(3, 4, 5)
     >>> get_area(circle)
-    12.56
+    12.57
     >>> get_area(triangle)
     6.0
 
